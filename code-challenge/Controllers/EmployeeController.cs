@@ -21,6 +21,17 @@ namespace challenge.Controllers
             _employeeService = employeeService;
         }
 
+        [HttpGet]
+        public IActionResult GetEmployees()
+        {
+            _logger.LogDebug("Received request for all employees");
+
+            var allEmployees = _employeeService.GetEmployees();
+
+            return Ok(allEmployees);
+        }
+
+
         [HttpPost]
         public IActionResult CreateEmployee([FromBody] Employee employee)
         {

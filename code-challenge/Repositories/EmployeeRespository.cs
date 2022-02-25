@@ -20,6 +20,11 @@ namespace challenge.Repositories
             _logger = logger;
         }
 
+        public List<Employee> GetEmployees()
+        {
+            return _employeeContext.Employees.ToList();
+        }
+
         public Employee Add(Employee employee)
         {
             employee.EmployeeId = Guid.NewGuid().ToString();
