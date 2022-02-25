@@ -7,7 +7,7 @@ namespace challenge.Models
 {
     public class ReportingStructure
     {
-        public String EmployeeId { get; set; }
+        public Employee employee { get; set; }
         public int NumberOfReports { get; set; }
     }
 }
