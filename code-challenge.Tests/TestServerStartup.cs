@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using challenge.Repositories;
 using challenge.Services;
 using challenge.Controllers;
+using Microsoft.Extensions.Hosting;
 
 namespace code_challenge.Tests.Integration
 {
@@ -34,7 +35,7 @@ namespace code_challenge.Tests.Integration
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, EmployeeDataSeeder seeder)
+        public void Configure(IApplicationBuilder app, IHostEnvironment env, ILoggerFactory loggerFactory, EmployeeDataSeeder seeder)
         {
             if (env.IsDevelopment())
             {
@@ -43,7 +44,6 @@ namespace code_challenge.Tests.Integration
             }
             
             app.UseMvc();
-
         }
     }
 }

@@ -14,6 +14,11 @@ namespace challenge.Data
 
         }
 
-        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Employee> Employees => Set<Employee>();
+
+        // library version issues... very annoying
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //    => optionsBuilder.UseLazyLoadingProxies();
+
     }
 }

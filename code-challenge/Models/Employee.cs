@@ -7,11 +7,22 @@ namespace challenge.Models
 {
     public class Employee
     {
-        public String EmployeeId { get; set; }
-        public String FirstName { get; set; }
-        public String LastName { get; set; }
-        public String Position { get; set; }
-        public String Department { get; set; }
-        public List<Employee> DirectReports { get; set; }
+        public String EmployeeId { get; set; } = Guid.NewGuid().ToString();
+        public String FirstName { get; set; } = String.Empty;
+        public String LastName { get; set; } = String.Empty;
+        public String Position { get; set; } = String.Empty;
+        public String Department { get; set; } = String.Empty;
+        public List<Employee> DirectReports { get; set; } = new List<Employee>();
+
+        //Employee constructor(String employeeId, String firstName, String lastName, String position, String department) {
+        //    return new Employee()
+        //    {
+        //        EmployeeId = employeeId,
+        //        FirstName = firstName,
+        //        LastName = lastName,
+        //        Position = position,
+        //        Department = department
+        //    };
+        //}
     }
 }

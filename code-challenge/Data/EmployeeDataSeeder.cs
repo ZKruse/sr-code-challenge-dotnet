@@ -37,10 +37,11 @@ namespace challenge.Data
             {
                 JsonSerializer serializer = new JsonSerializer();
 
-                List<Employee> employees = serializer.Deserialize<List<Employee>>(jr);
-                FixUpReferences(employees);
+                List<Employee>? employees = serializer.Deserialize<List<Employee>>(jr);
+                if(employees != null)
+                    FixUpReferences(employees);
 
-                return employees;
+                return employees ?? new List<Employee>();
             }
         }
 

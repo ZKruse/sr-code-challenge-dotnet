@@ -13,6 +13,8 @@ using Microsoft.EntityFrameworkCore;
 using challenge.Repositories;
 using challenge.Services;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 
 namespace code_challenge
 {
@@ -28,6 +30,7 @@ namespace code_challenge
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers(options => options.EnableEndpointRouting = false);
             services.AddDbContext<EmployeeContext>(options =>
             {
                 options.UseInMemoryDatabase("EmployeeDB");
@@ -44,7 +47,7 @@ namespace code_challenge
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, EmployeeDataSeeder seeder)
+        public void Configure(IApplicationBuilder app, IHostEnvironment env, EmployeeDataSeeder seeder)
         {
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
@@ -57,12 +60,6 @@ namespace code_challenge
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mindex api v1");
                 c.RoutePrefix = string.Empty;
             });
-
-            //app.UseRouting();
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapControllers();
-            //});
 
             if (env.IsDevelopment())
             {

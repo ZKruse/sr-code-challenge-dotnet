@@ -7,8 +7,9 @@ namespace challenge.Services
     public interface IEmployeeService
     {
         List<Employee> GetEmployees();
-        Employee GetById(String id);
-        Employee Create(Employee employee);
-        Employee Replace(Employee originalEmployee, Employee newEmployee);
+        Employee? GetById(String id);
+        Employee? Create(Employee employee);
+        ReportingStructure? GetReportingStructure(String id);
+        Employee? Replace(Employee originalEmployee, Employee newEmployee);
     }
 }

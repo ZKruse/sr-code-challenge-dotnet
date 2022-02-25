@@ -24,7 +24,7 @@ namespace challenge.Services
             return _employeeRepository.GetEmployees();
         }
 
-        public Employee Create(Employee employee)
+        public Employee? Create(Employee employee)
         {
             if(employee != null)
             {
@@ -35,7 +35,7 @@ namespace challenge.Services
             return employee;
         }
 
-        public Employee GetById(string id)
+        public Employee? GetById(string id)
         {
             if(!String.IsNullOrEmpty(id))
             {
@@ -45,7 +45,20 @@ namespace challenge.Services
             return null;
         }
 
-        public Employee Replace(Employee originalEmployee, Employee newEmployee)
+        public ReportingStructure? GetReportingStructure(string id)
+        {
+            var employee = GetById(id);
+            if (employee == null)
+                return null;
+
+            ReportingStructure rs = new ReportingStructure()
+            {
+                employee = employee,
+            };
+            return rs;
+        }
+
+        public Employee? Replace(Employee originalEmployee, Employee newEmployee)
         {
             if(originalEmployee != null)
             {
